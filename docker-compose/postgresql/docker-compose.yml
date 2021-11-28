@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+
+  postgresdev:
+    image: postgres:13.0-alpine
+    environment:
+      # Create db
+      POSTGRES_DB: data_access
+      # Use postgres/secret user/password credentials
+      POSTGRES_PASSWORD: secret
+      # enforce UTC timezone
+      TZ: UTC
+    volumes:
+      - postgresql-data-local:/var/lib/data_access/data
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer:4
+    ports:
+      - 8081:8080
+
+
+# permanent storage of data.
+# > docker volume rm data_access-data-local
+volumes:
+  postgresql-data-local:
+
+
+
+

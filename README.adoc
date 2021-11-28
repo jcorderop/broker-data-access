@@ -1,0 +1,82 @@
+= Broker-data-access
+
+== DataAccessManager API Project Description:
+
+* DataAccessManager API is designed to expose the relevant data to enable the system to place orders and trade
+* A set of endpoint are offered by the API to fetch the data, go to swagger section
+* Order and trade, both are going to be parallel services to allow the system scale horizontally
+
+=== Data Model
+
+* IMPORTANT: The Data Model is still under definition
+
+image::doc/data_access.png[]
+
+== Project
+
+=== Building
+
+* Go to <WORKSPACE>/
+
+* To launch the tests:
+
+    mvn clean test
+
+* To package the application:
+
+    mvn clean package
+
+* To run/stop the application:
+
+    mvn spring-boot:run
+    mvn spring-boot:stop
+
+* To build a new docker image:
+
+    mvn spring-boot:build-image
+
+IMPORTANT: If you run the service locally, you have to deploy PostgreSql first, for more details go to dockers section.
+
+== Spring Boot
+
+* Spring Boot Web
+* Spring Boot Jpa
+* Spring Boot Actuator
+
+=== Spring Boot Help
+
+* https://spring.io/projects/spring-boot[Spring Boot]
+
+== API definition
+
+The definition can be accessed via swagger-ui, to access to it go to:
+
+    http://localhost:8080/swagger-ui/#
+
+image::doc/API.PNG[]
+
+=== Swagger help
+
+* https://swagger.io/[Swagger.io]
+
+== Storage
+
+* Uses PostgreSql to store the model defined
+
+IMPORTANT:
+* The database is still until design, this is why it is configured to be recreated every start-up * Once the model is in a more mature state flyway will be used to have a control versioning
+
+== Docker-compose
+
+=== Building
+
+To deploy only PostgreSql
+
+* Go to <WORKSPACE>/docker-compose/postgresql
+* execute
+
+    docker-compose up -d
+
+=== Docker Help
+
+* https://docs.docker.com/[Docker.com]
