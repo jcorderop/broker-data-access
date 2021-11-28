@@ -4,14 +4,16 @@
 
 * DataAccessManager API is designed to expose the relevant data to enable the system to place orders and trades
 * This API exposes semi-static data
-* A set of endpoint are offered by the API to fetch the data, go to swagger section
+* A set of endpoint are offered by the API to fetch the data, for more details go to swagger section
 * Order and trade, both are going to be parallel services to allow the system scale horizontally
 
 === Data Model
 
-* IMPORTANT: The Data Model is still under definition
+* Database name: data-access
 
 image::doc/data_access.png[]
+
+* IMPORTANT: The Data Model is still under definition
 
 == Project
 
