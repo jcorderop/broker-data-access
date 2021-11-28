@@ -2,7 +2,8 @@
 
 == DataAccessManager API Project Description:
 
-* DataAccessManager API is designed to expose the relevant data to enable the system to place orders and trade
+* DataAccessManager API is designed to expose the relevant data to enable the system to place orders and trades
+* This API exposes semi-static data
 * A set of endpoint are offered by the API to fetch the data, go to swagger section
 * Order and trade, both are going to be parallel services to allow the system scale horizontally
 
