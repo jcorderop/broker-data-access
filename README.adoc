@@ -1,11 +1,26 @@
 = Broker-data-access
 
+== New features from branch "flyway":
+
+* Added flyway database for versioning
+- To create tables
+- To create basic initial load for semi-static configuration tables
+* Added Unittest
+- Added H2 for unit test
+- Added integration testing for the controller
+* Files *DBLoad
+- Refactoring moving *DBLoad into *.database.config package
+- Excluded in @SpringBootApplication
+- Right now only used during Unittest
+
 == DataAccessManager API Project Description:
 
 * DataAccessManager API is designed to expose the relevant data to enable the system to place orders and trades
 * This API exposes semi-static data
 * A set of endpoint are offered by the API to fetch the data, for more details go to swagger section
 * Order and trade, both are going to be parallel services to allow the system scale horizontally
+
+image::doc/DataAccessManager.PNG[]
 
 === Data Model
 
@@ -54,7 +69,7 @@ IMPORTANT: If you run the service locally, you have to deploy PostgreSql first, 
 
 The definition can be accessed via swagger-ui, to access to it go to:
 
-    http://localhost:8080/swagger-ui/#
+    http://localhost:9081/swagger-ui/#
 
 image::doc/API.PNG[]
 
@@ -67,7 +82,9 @@ image::doc/API.PNG[]
 * Uses PostgreSql to store the model defined
 
 IMPORTANT:
-* The database is still until design, this is why it is configured to be recreated every start-up * Once the model is in a more mature state flyway will be used to have a control versioning
+
+* The database is still until design
+* Added flyway for control versioning
 
 == Docker-compose
 
