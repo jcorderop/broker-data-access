@@ -8,9 +8,6 @@
 * Added Unittest
 - Added H2 for unit test
 - Added integration testing for the controller
-- To test the model:
-. added test to create and cancel orders
-. added test to confirm trades and fulfill orders
 * Files *DBLoad
 - Refactoring moving *DBLoad into *.database.config package
 - Excluded in @SpringBootApplication

@@ -11,18 +11,29 @@ import org.broker.dataaccess.model.trade.TradeType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.broker.dataaccess.controller.DataAccessEndPoints.*;
 
-
 @SpringBootTest
+@ComponentScan(
+        basePackages = {
+                "org.broker.dataaccess"
+        }
+)
 @ActiveProfiles("test")
 class DataAccessManagerControllerTest {
+
+    private static Logger logger = LoggerFactory.getLogger(DataAccessManagerControllerTest.class);
 
     @Value("${server.port}")
     private int port;
@@ -49,6 +60,7 @@ class DataAccessManagerControllerTest {
         //then
         assertThat(result).isNotNull();
         assertThat(result.length).isGreaterThan(0);
+        Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
     @Test
@@ -63,6 +75,7 @@ class DataAccessManagerControllerTest {
         //then
         assertThat(result).isNotNull();
         assertThat(result.length).isGreaterThan(0);
+        Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
     @Test
@@ -77,6 +90,7 @@ class DataAccessManagerControllerTest {
         //then
         assertThat(result).isNotNull();
         assertThat(result.length).isGreaterThan(0);
+        Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
     @Test
@@ -91,6 +105,7 @@ class DataAccessManagerControllerTest {
         //then
         assertThat(result).isNotNull();
         assertThat(result.length).isGreaterThan(0);
+        Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
     @Test
@@ -105,6 +120,7 @@ class DataAccessManagerControllerTest {
         //then
         assertThat(result).isNotNull();
         assertThat(result.length).isGreaterThan(0);
+        Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
     @Test
@@ -119,6 +135,7 @@ class DataAccessManagerControllerTest {
         //then
         assertThat(result).isNotNull();
         assertThat(result.length).isGreaterThan(0);
+        Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
     @Test
@@ -133,6 +150,7 @@ class DataAccessManagerControllerTest {
         //then
         assertThat(result).isNotNull();
         assertThat(result.length).isGreaterThan(0);
+        Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
     @Test
@@ -147,6 +165,7 @@ class DataAccessManagerControllerTest {
         //then
         assertThat(result).isNotNull();
         assertThat(result.length).isGreaterThan(0);
+        Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
     @Test
@@ -161,5 +180,6 @@ class DataAccessManagerControllerTest {
         //then
         assertThat(result).isNotNull();
         assertThat(result.length).isGreaterThan(0);
+        Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 }

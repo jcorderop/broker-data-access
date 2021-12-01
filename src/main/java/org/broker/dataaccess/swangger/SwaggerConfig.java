@@ -1,6 +1,8 @@
 package org.broker.dataaccess.swangger;
 
 import lombok.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +30,8 @@ import java.time.LocalDateTime;
 @ConditionalOnProperty(name = "app.api.swagger.enable", havingValue = "true", matchIfMissing = false)
 public class SwaggerConfig {
 
+    private static final Logger logger = LoggerFactory.getLogger(SwaggerConfig.class);
+
     private String version;
     private String title;
     private String description;
@@ -37,6 +41,7 @@ public class SwaggerConfig {
 
     @Bean
     public Docket api() {
+        logger.info("Loading Swagger Docket...");
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(basePackage))
@@ -49,6 +54,7 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
+        logger.info("Loading Swagger ApiInfo...");
         return new ApiInfoBuilder()
                 .title(title)
                 .description(description)
