@@ -10,12 +10,12 @@ import org.broker.dataaccess.model.status.Status;
 import org.broker.dataaccess.model.trade.TradeType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestTemplate;
 
@@ -25,15 +25,12 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.broker.dataaccess.controller.DataAccessEndPoints.*;
 
 @SpringBootTest
-@ComponentScan(
-        basePackages = {
-                "org.broker.dataaccess"
-        }
-)
 @ActiveProfiles("test")
+
 class DataAccessManagerControllerTest {
 
     private static Logger logger = LoggerFactory.getLogger(DataAccessManagerControllerTest.class);
+
 
     @Value("${server.port}")
     private int port;
@@ -48,6 +45,7 @@ class DataAccessManagerControllerTest {
     void tearDown() {
     }
 
+    @Disabled
     @Test
     void getCounterparties() {
         //given
@@ -63,6 +61,7 @@ class DataAccessManagerControllerTest {
         Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
+    @Disabled
     @Test
     void getCounterpartiesType() {
         //given
@@ -78,6 +77,7 @@ class DataAccessManagerControllerTest {
         Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
+    @Disabled
     @Test
     void getInstruments() {
         //given
@@ -93,6 +93,7 @@ class DataAccessManagerControllerTest {
         Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
+    @Disabled
     @Test
     void getInstrumentsType() {
         //given
@@ -108,6 +109,7 @@ class DataAccessManagerControllerTest {
         Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
+    @Disabled
     @Test
     void getCurrenciesType() {
         //given
@@ -123,6 +125,7 @@ class DataAccessManagerControllerTest {
         Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
+    @Disabled
     @Test
     void getOrdersType() {
         //given
@@ -138,6 +141,7 @@ class DataAccessManagerControllerTest {
         Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
+    @Disabled
     @Test
     void getPortfolios() {
         //given
@@ -153,6 +157,7 @@ class DataAccessManagerControllerTest {
         Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
+    @Disabled
     @Test
     void getStatus() {
         //given
@@ -168,10 +173,13 @@ class DataAccessManagerControllerTest {
         Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
     }
 
+
     @Test
+    @Disabled
     void getTradesType() {
         //given
         String uri = host + ENDPOINT_TRADE_TYPE;
+
         RestTemplate restTemplate = new RestTemplate();
 
         //when
@@ -181,5 +189,6 @@ class DataAccessManagerControllerTest {
         assertThat(result).isNotNull();
         assertThat(result.length).isGreaterThan(0);
         Arrays.stream(result).forEach(e -> logger.info(String.valueOf(e)));
+
     }
 }

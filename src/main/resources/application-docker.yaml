@@ -1,6 +1,8 @@
 spring:
   flyway:
     enabled: true
+  config:
+    import: "optional:configserver:http://localhost:9080"
   application:
     name: "dam"
   datasource:
@@ -15,15 +17,6 @@ spring:
       hibernate:
         dialect: "org.hibernate.dialect.PostgreSQLDialect"
         format_sql: true
-  cloud:
-    config:
-      enabled: false
-    compatibility-verifier:
-      enabled: false
-
-eureka:
-  client:
-    enabled: false
 
 server:
   port: 9081
