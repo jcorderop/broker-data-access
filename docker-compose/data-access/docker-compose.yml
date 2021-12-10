@@ -15,18 +15,42 @@ services:
       - data_access-data-local:/var/lib/postgresql/data_access/data
     ports:
       - 5432:5432
+    networks:
+      - dam-network
 
   adminer:
     image: adminer:4
     ports:
       - 8081:8080
+    networks:
+      - dam-network
 
+  dataaccess:
+    image: jcorderop/data-access:latest
+    ports:
+      - "9081:9081"
+    environment:
+      SPRING_PROFILES_ACTIVE: "it"
+    networks:
+      - dam-network
+    depends_on:
+      - postgresdev
+    links:
+      - postgresdev:database
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 15s
+        max_attempts: 3
+        window: 120s
 
 # permanent storage of data.
-# > docker volume rm data_access-data-local
+# > docker volume rm marketdata-data-local
 volumes:
   data_access-data-local:
 
+networks:
+  dam-network:
 
 
 

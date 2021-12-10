@@ -1,5 +1,14 @@
 = Broker-data-access
 
+== New features from branch "docker":
+
+* Added docker-compose
+- to run only the service and database
+* The following two features are enabled only running the docker-compose via broker-infrastructure
+- Added configuration client
+- Added registration to eureka
+* Added micrometer and endpoint for prometeus
+
 == New features from branch "flyway":
 
 * Added flyway database for versioning
@@ -89,6 +98,13 @@ IMPORTANT:
 == Docker-compose
 
 === Building
+
+To deploy the DataAccessManger with PostgreSql
+
+* Go to <WORKSPACE>/docker-compose/data-access
+* execute
+
+    docker-compose up -d
 
 To deploy only PostgreSql
 

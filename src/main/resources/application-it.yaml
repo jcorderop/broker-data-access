@@ -4,7 +4,7 @@ spring:
   application:
     name: "dam"
   datasource:
-    url: "jdbc:postgresql://localhost:5432/data_access"
+    url: "jdbc:postgresql://database:5432/data_access"
     username: "postgres"
     password: "secret"
   jpa:
